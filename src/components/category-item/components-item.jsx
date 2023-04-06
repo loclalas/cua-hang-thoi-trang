@@ -2,7 +2,6 @@ import "./components-item.styles.scss";
 
 const CategoriesItem = (props) => {
   const { category } = props;
-  console.log(category);
   return (
     <div className="category-container">
       <div
