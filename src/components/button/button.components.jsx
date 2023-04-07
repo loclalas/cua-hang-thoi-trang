@@ -6,10 +6,12 @@ const BUTTON_TYPE_CLASSES = {
 };
 
 const Button = (props) => {
-  console.log(props);
   const { children, buttonTypes, ...otherProps } = props;
   return (
-    <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonTypes]}`}>
+    <button
+      className={`button-container ${BUTTON_TYPE_CLASSES[buttonTypes]}`}
+      {...otherProps}
+    >
       {children}
     </button>
   );
