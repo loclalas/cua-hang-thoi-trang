@@ -1,4 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from "./../../utils/firebase/firebase.utils";
 
 // Giá trị của Context:
 export const UserContext = createContext({
@@ -13,6 +17,17 @@ export const UserProvider = ({ children }) => {
     currentUser,
     setCurrentUser,
   };
+
+  useEffect(() => {
+    const unsubcribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      setCurrentUser(user);
+    });
+
+    return unsubcribe;
+  }, []);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
