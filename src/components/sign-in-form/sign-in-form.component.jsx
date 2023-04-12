@@ -8,7 +8,7 @@ import {
 } from "./../../utils/firebase/firebase.utils";
 import Button from "./../button/button.components";
 import "./sign-in-form.styles.scss";
-import { UserContext } from "./../contexts/user.context";
+import { UserContext } from "./../../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
